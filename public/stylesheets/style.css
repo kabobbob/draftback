@@ -2,7 +2,7 @@
 
 body { 
 	font: 8pt verdana; 
-	background: #DFD6B4 url('/images/bg.gif') repeat-y;
+	background: #DFD6B4 url('../images/bg.gif') repeat-y;
   background-position: 50% 0px;
 	margin: 0;
 	padding: 0;
@@ -124,7 +124,7 @@ p {
 }
 	
 #header {
-  background: #FFF url('/images/header.gif') right no-repeat;
+  background: #FFF url('../images/header.gif') right no-repeat;
 	width: 750px;
   height: 165px;	
 }
@@ -156,7 +156,7 @@ p {
 	clear: left;
 	border-top: 1px solid #ffffff;
 	border-bottom: 1px solid #ffffff;
-	background: #ffffff url(/images/grassfooter.jpg) bottom no-repeat;
+	background: #ffffff url(../images/grassfooter.jpg) bottom no-repeat;
 	padding: 55px 0 5px 0;
 }
 
