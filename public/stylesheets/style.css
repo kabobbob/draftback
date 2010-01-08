@@ -1,0 +1,173 @@
+/* Football CSS  LFS ACES*/
+
+body { 
+	font: 8pt verdana; 
+	background: #DFD6B4 url('/images/bg.gif') repeat-y;
+  background-position: 50% 0px;
+	margin: 0;
+	padding: 0;
+}
+  
+.style5 {
+  color: #003366
+}
+
+.style6 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.style7 {
+  color: #FFFFFF
+}
+
+#menu {
+  margin-left: 150px; 
+  margin-top: -3px; 
+  padding-top: 3px;
+}
+
+#menu ul {
+  margin: 0; 
+  background-color: #fff; 
+  padding: 5px; 
+  text-align: center;
+}
+
+#menu ul li { 
+  display: inline; 
+  list-style-type: none;
+}
+
+#menu ul li a:link, 
+#menu ul li a:visited { 
+  background-color: green; 
+  color: white; 
+  padding: 5px; 
+  text-decoration: none; 
+  border-right: 1px solid #fff; 
+  border-left: 1px solid #fff; 
+}
+
+#menu ul li a:hover { 
+  background-color: green; 
+  color:white; 
+  padding-top: .75em; 
+  border-top: 1px outset gray; 
+}
+
+a:link {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #0066FF;
+}
+
+a:active {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+h1 {
+	font: 18pt verdana, arial, sans-serif;
+	color: #666;
+	margin: 0;
+	padding: 20px;
+}
+
+h2 {
+	font: 14pt verdana, arial, sans-serif;
+	color: #666;
+	padding: 10px;
+	margin: 0;
+  text-align: center;
+}
+
+h3 {
+	font: 10pt verdana, arial, sans-serif;
+	color: #FFFFFF;
+	padding: 12px;
+	margin: 0;
+  text-align: center;
+}
+
+h4 {
+	font: 10pt arial;
+	color: #000000;
+	margin: 0;
+  text-align: justify;
+}
+
+p { 
+	font: 8pt arial;
+  color: #FFFFFF; 
+	margin: 0px; 
+	text-align: left;
+}
+	
+#contain {
+	width: 750px;
+	border-right: 5px solid #ffffff;
+	border-left: 5px solid #ffffff;
+	margin-left: auto;
+	margin-right: auto;
+	background: #FFF;
+}
+	
+#header {
+  background: #FFF url('/images/header.gif') right no-repeat;
+	width: 750px;
+  height: 165px;	
+}
+
+#leftcol {
+	width: 150px;
+	float: left;
+	padding: 5px 0 5px 0;
+	background-color: #008000;
+}
+
+#leftcol p {
+	padding: 3px 18px 3px 18px;
+	margin: 0;
+}
+
+#content {
+	margin-left: 160px;
+	width: 575px
+}
+
+#content p {
+	padding: 3px 18px 3px 18px;
+	margin: 0;
+}
+
+#footer {
+	width: 750px;
+	clear: left;
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	background: #ffffff url(/images/grassfooter.jpg) bottom no-repeat;
+	padding: 55px 0 5px 0;
+}
+
+#footer p {
+	text-align: center;
+	padding-right: 8px;
+	font: 8pt verdana, arial, sans-serif;
+  color: #000000;
+}
+
+#leftImg {
+  float: left;
+  padding: 0 0px 0px 0;
+}
