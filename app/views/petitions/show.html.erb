@@ -1,0 +1,30 @@
+<h2> Petition to Commissioner Roger Goddell</h2>
+<h4>
+  To: Roger Goodell<br/>
+  Commissioner<br/>
+  National Football League<br/>
+  <br/>
+  We the undersigned do hereby respectfully request that the NFL reconsider its Draft Day policies and agree to move the
+  start time of the 1st Round of The NFL Draft from its current Thursday 7:00 p.m. slot back to Saturday at noon.<br/>
+  <br/>
+  Sincerely,<br/>
+  The Undersigned
+  <div style='text-align: center;'>
+    <%= link_to 'Sign the Petition', sign_petition_path(), :style => 'color: black;' %>
+  </div>
+  
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Location</td>
+      <td>Comments</td>
+    </tr>
+    <% for petition in @petitions %>
+    <tr>
+      <td><%= petition.full_name%></td>
+      <td><%= petition.location%></td>
+      <td><%= petition.comments%></td>
+    </tr>
+    <% end %>
+  </table>
+</h4>
