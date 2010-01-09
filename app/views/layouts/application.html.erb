@@ -47,6 +47,9 @@
         <li><%= link_to 'Petition', petition_path() %></li>
         <li><%= link_to 'Archive', '#' %></li>
         <li><%= link_to 'Links', '#' %></li>
+        <% if current_user %>
+          <li><%= link_to 'Manage', manage_path() %></li>
+        <% end %>
       </ul>
     </div>
     
@@ -55,7 +58,14 @@
     </div>
   
     <div id="footer">
-      <p>Copyright <%= Time.now.strftime('%Y') %></p>
+      <p>
+        <% if current_user %>
+          <%= link_to "Logout " + current_user.login, user_session_path, :method => :delete %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path() %>
+        <% end %> | 
+        Copyright <%= Time.now.strftime('%Y') %>
+      </p>
     </div>
   
   </div>

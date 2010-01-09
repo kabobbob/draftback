@@ -1,0 +1,24 @@
+<tr>
+  <td><%= user_form.label :login %></td>
+  <td><%= user_form.text_field :login %></td>
+</tr>
+<tr>
+  <td><%= user_form.label :email %></td>
+  <td><%= user_form.text_field :email %></td>
+</tr>
+<tr>
+  <td><%= user_form.label :first_name %></td>
+  <td><%= user_form.text_field :first_name %></td>
+</tr>
+<tr>
+  <td><%= user_form.label :last_name %></td>
+  <td><%= user_form.text_field :last_name %></td>
+</tr>
+<tr>
+  <td><%= user_form.label :password, user_form.object.new_record? ? nil : "Change password" %></td>
+  <td><%= user_form.password_field :password %></td>
+</tr>
+<tr>
+  <td><%= user_form.label :password_confirmation %></td>
+  <td><%= user_form.password_field :password_confirmation %></td>
+</tr>

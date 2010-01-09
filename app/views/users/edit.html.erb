@@ -1,0 +1,19 @@
+<div class="content-full">
+  <h2>Edit User</h2>
+  <p></p>
+  <div>
+  <% form_for @user, :url => user_path(@user), :html => {:method => :put} do |f| %>
+  <table>
+    <tr>
+      <td colspan="2"><%= f.error_messages %></td>
+    </tr>
+    <%= render :partial => "user_form", :object => f %>
+    <tr>
+      <td colspan="2">
+        <%= f.submit "Update" %> | <%= button_to_function "Back", "location.href = '#{user_path(@user.id)}'" %>
+      </td>
+    </tr>
+  </table>  
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="content-full">
+  <h2>New User</h2>
+  <p></p>
+  <% form_for @user, :url => users_path do |f| %>
+  <table>
+    <tr>
+      <td colspan="2"><%= f.error_messages %></td>
+    </tr>
+    <%= render :partial => "user_form", :object => f %>
+    <tr>
+      <td colspan="2">
+        <%= f.submit "Register" %>
+        <%= button_to_function "Back", "location.href = '#{users_path}'" %>
+      </td>
+    </tr>
+  </table>
+  <% end %>
+</div>

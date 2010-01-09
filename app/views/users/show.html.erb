@@ -1,0 +1,29 @@
+<div class="content-full">
+  <h2> View User</h2>
+  <p></p>
+  <div>
+    <table>
+      <tr>
+        <td width="100px"><b>Login</b></td>
+        <td><%= @user.login %></td>
+      </tr>
+      <tr>
+        <td><b>Email</b></td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td><b>First Name</b></td>
+        <td><%= @user.first_name %></td>
+      </tr>
+      <tr>
+        <td><b>Last Name</b></td>
+        <td><%= @user.last_name %></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <%= link_to 'Edit', edit_user_path %> | <%= link_to 'Back', users_path %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
