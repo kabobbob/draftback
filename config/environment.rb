@@ -39,3 +39,5 @@ Rails::Initializer.run do |config|
   # old style migration numbers
   config.active_record.timestamped_migrations = false
 end
+
+require 'rss/maker'

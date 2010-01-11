@@ -1,0 +1,12 @@
+<% if @post.nil? %>
+  <h2>Sorry, this post is no longer available.</h2>
+  <p style="height:100px"></p>
+<% else %>
+  <span class="post_title"><%= @post.title %></span>
+  <br/>
+  <span class="dateline"><%= @post.created_at.strftime("%A, %B %d, %Y  %I:%M%p") %></span>
+  <br/><br/>
+  <div class="intro"><%= @post.entry %></div>
+  <br/>
+  <p><%= @post.signature %></p>
+<% end %>

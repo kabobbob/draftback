@@ -8,6 +8,16 @@ body {
 	padding: 0;
 }
   
+.alt {
+  color: inherit;
+  background-color: #fff;
+}
+
+.alt2 {
+  color: inherit;
+  background-color: #efefef;
+}
+
 .style5 {
   color: #003366
 }
@@ -20,6 +30,10 @@ body {
 
 .style7 {
   color: #FFFFFF
+}
+
+.fieldWithErrors{
+  /* float: left; */
 }
 
 #menu {
@@ -92,6 +106,11 @@ h2 {
   text-align: center;
 }
 
+h2.left {
+  padding: 0px;
+  text-align: left;
+}
+
 h3 {
 	font: 10pt verdana, arial, sans-serif;
 	color: #FFFFFF;
@@ -101,19 +120,103 @@ h3 {
 }
 
 h4 {
-	font: 10pt arial;
-	color: #000000;
-	margin: 0;
-  text-align: justify;
+	font: 1.6em arial;
+	color: #fff;
+	margin: 5px 0px 0px 5px;
+  text-align: left;
 }
 
+.sidebar_header{
+  margin: 5px 0px 0px 5px;
+  color: #fff;  
+}
+
+ul.side_nav {
+  color: #fff;  
+}
+
+ul.side_nav li {
+  margin: 0px;
+  list-style-type: none;
+}
+
+ul.side-nav li a {
+  display: block;
+  margin: 0;
+  padding: 5px 0 5px 0px;
+}
+
+ul.side-nav li a:link, ul.side-nav li a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+ul.side-nav li a:hover {
+  color: #ffffff;
+}
+
+/*
+ul.side-nav {
+  margin: 10px 5px 10px 17px;
+  border-top: 1px solid #e9e7e7;
+  font-size: .7em;
+  color: #978f7c;
+  text-transform: uppercase;
+}
+
+ul.side-nav li {
+  margin: 0;
+  list-style-type: none;
+  padding: 1px 0;
+}
+
+ul.side-nav li a {
+  display: block;
+  border-bottom: 1px solid #e9e7e7;
+  margin: 0;
+  padding: 10px 0 10px 20px;
+  background: url(../images/side-nav-bullet.gif) no-repeat 5px 50%;
+}
+
+ul.side-nav li a:link, ul.side-nav li a:visited {
+  color: #978f7c;
+  text-decoration: none;
+}
+
+ul.side-nav li a:hover {
+  background: url(../images/side-nav-bullet-light.gif) no-repeat 5px 50% #f6f5f0;
+  color: #cac6ba;
+}
+*/
 p { 
-	font: 8pt arial;
-  color: #FFFFFF; 
+  color: #000; 
 	margin: 0px; 
 	text-align: left;
 }
 	
+div.intro:first-letter {
+  font-size: 1.4em;
+  letter-spacing: -1px;
+}
+
+span.post_title{
+  margin: 0 0 0 0;
+  font-weight: lighter;
+  font-size: 1.8em;
+  color: #464031;
+}
+
+span.dateline {
+  font-size: .9em;
+  font-weight: lighter;
+  color: #dc3409;
+  margin: 0 0 10px 0;
+}
+
+div.post_list{
+  margin-bottom: 10px;  
+}
+
 #contain {
 	width: 750px;
 	border-right: 5px solid #ffffff;
@@ -147,7 +250,6 @@ p {
 }
 
 #content p {
-	padding: 3px 18px 3px 18px;
 	margin: 0;
 }
 

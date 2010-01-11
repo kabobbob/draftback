@@ -1,28 +1,26 @@
 <h2> Sign the Petition</h2>
-<h4>
-  <% form_for(:petition, @petition, :url => submit_petition_path()) do |f| -%>
-  <table>
-    <tr>
-      <td>Full Name:</td>
-      <td><%= f.text_field :full_name %></td>
-    </tr>
-    <tr>
-      <td>Email Address:</td>
-      <td><%= f.text_field :email_address %></td>
-    </tr>
-    <tr>
-      <td>Location:</td>
-      <td><%= f.text_field :location %></td>
-    </tr>
-    <tr>
-      <td valign='top'>Comments:</td>
-      <td><%= f.text_area :comments, :size => '35x5' %></td>
-    </tr>
-    <tr>
-      <td colspan='2' align='center'>
-        <%= submit_tag 'Submit' %>
-      </td>
-    </tr>
-  </table>
-  <% end %>  
-</h4>
+<% form_for(:petition, @petition, :url => submit_petition_path()) do |f| -%>
+<table>
+  <tr>
+    <td>Full Name:</td>
+    <td><%= f.text_field :full_name %></td>
+  </tr>
+  <tr>
+    <td>Email Address:</td>
+    <td><%= f.text_field :email_address %></td>
+  </tr>
+  <tr>
+    <td>Location:</td>
+    <td><%= f.text_field :location %></td>
+  </tr>
+  <tr>
+    <td valign='top'>Comments:</td>
+    <td><%= f.text_area :comments, :size => '35x5' %></td>
+  </tr>
+  <tr>
+    <td colspan='2' align='center'>
+      <%= submit_tag 'Submit' %>
+    </td>
+  </tr>
+</table>
+<% end %>  

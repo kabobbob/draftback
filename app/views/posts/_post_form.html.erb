@@ -1,0 +1,15 @@
+<tr>
+  <td><b><%= post_form.label :title %></b></td>
+  <td><%= post_form.text_field :title, :size => "50" %></td>
+</tr>
+<tr>
+  <td valign="top"><b><%= post_form.label :entry %></b></td>
+  <td><%= post_form.tinymce :entry, :size => "50x8" %></td>
+</tr>
+<tr>
+  <td><b><%= post_form.label :signature %></b></td>
+  <td>
+    <%= post_form.radio_button :signature, "Bob M." %> Bob M.
+    <%= post_form.radio_button :signature, "Kurt S." %> Kurt S.
+  </td>
+</tr>

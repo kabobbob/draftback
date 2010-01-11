@@ -1,0 +1,15 @@
+<% cell_class = alt %>
+<tr>
+  <td <%= cell_class %>><%= post.title%></td>
+  <td <%= cell_class %>><%= post.signature %></td>
+  <td <%= cell_class %>><%= post.created_at.strftime("%m/%d/%Y %I:%M %p") %></td>
+  <td <%= cell_class %> align="center">
+    <%= check_box_tag "displayed", 1, post.shown? ? true : false, :onclick => remote_function(:url => toggle_displayed_post_path(post.id), :method => :get, :with => "'checked='+this.checked") %>
+  </td>
+  <td <%= cell_class %>><%= link_to 'View', post_path(post.id) %> | <%= link_to 'Delete', post_path(post.id), :method => :delete, :confirm => "Are you sure?" %></td>
+</tr>
+<tr>
+  <td <%= cell_class %> colspan="5">
+    <span style="font-size: 11px"><%= post.entry %></span>
+  </td>
+</tr>

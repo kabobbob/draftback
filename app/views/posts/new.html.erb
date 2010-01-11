@@ -1,0 +1,16 @@
+<h2>New Post</h2>
+<p></p>
+<% form_for @post, :url => posts_path do |f| %>
+<table>
+  <tr>
+    <td colspan="2"><%= f.error_messages %></td>
+  </tr>
+  <%= render :partial => "post_form", :object => f %>
+  <tr>
+    <td colspan="2">
+      <%= f.submit "Submit" %>
+      <%= button_to_function "Back", "location.href = '#{posts_path}'" %>
+    </td>
+  </tr>
+</table>
+<% end %>

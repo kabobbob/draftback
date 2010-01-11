@@ -1,0 +1,16 @@
+<h2>Archives</h2>
+<p></p>
+<% for post in @posts %>
+<div class='post_list'>
+  <span class='post_title'><%= post.title %></span>
+  <br/>
+  <span class="dateline"><%= post.created_at.strftime("%A, %B %d, %Y  %I:%M%p") %></span>
+  <br/><br/>
+  <div class="intro">
+    <%= post.entry %>
+  </div>
+  <p><%= post.signature %></p>
+  <br/>
+  <%= link_to 'View', full_post_path(post.id) %>
+</div>  
+<% end %>

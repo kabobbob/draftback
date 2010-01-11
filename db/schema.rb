@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2) do
+ActiveRecord::Schema.define(:version => 3) do
 
   create_table "petitions", :force => true do |t|
     t.string   "full_name"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(:version => 2) do
     t.text     "comments"
     t.string   "ip_address"
     t.boolean  "hide_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id",                    :null => false
+    t.text     "title",                      :null => false
+    t.string   "entry",      :limit => 4000, :null => false
+    t.string   "signature",                  :null => false
+    t.boolean  "shown",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,39 @@
+<div class="content-full">
+  <h2> View Post</h2>
+  <p></p>
+  <div>
+    <table>
+      <tr>
+        <td width="100px"><b>Title</b></td>
+        <td><%= @post.title %></td>
+      </tr>
+      <tr>
+        <td valign="top"><b>Post</b></td>
+        <td><%= @post.entry %></td>
+      </tr>
+      <tr>
+        <td><b>Signature</b></td>
+        <td><%= @post.signature %></td>
+      </tr>
+      <!--
+      <tr>
+        <td><b>By</b></td>
+        <td><%= @post.user.login %></td>
+      </tr>
+      -->
+      <tr>
+        <td><b>Created</b></td>
+        <td><%= @post.created_at.strftime("%m/%d/%Y %I:%M %p") %></td>
+      </tr>
+      <tr>
+        <td><b>Updated</b></td>
+        <td><%= @post.updated_at.strftime("%m/%d/%Y %I:%M %p") %></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Back', posts_path %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

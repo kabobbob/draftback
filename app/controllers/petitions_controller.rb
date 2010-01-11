@@ -11,4 +11,8 @@ class PetitionsController < ApplicationController
     petition = Petition.create(params[:petition])
     redirect_to :action => 'show'
   end
+  
+  def manage
+    
+  end
 end
