@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     
     if @post.save
       create_xml_feed
+      tweet_post(@post.title)
       flash[:notice] = "Entry submitted!"
       redirect_to posts_path      
     else
@@ -34,6 +35,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       create_xml_feed
+      tweet_post(@post.title)
       flash[:notice] = "Entry updated!"
       redirect_to post_path
     else

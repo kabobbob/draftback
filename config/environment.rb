@@ -41,3 +41,4 @@ Rails::Initializer.run do |config|
 end
 
 require 'rss/maker'
+require 'twitter'

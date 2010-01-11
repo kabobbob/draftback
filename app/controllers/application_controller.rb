@@ -67,6 +67,15 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
   
+  def tweet_post(post)
+    # create tweet
+    tweet = "A new post has been created"
+    http_auth = Twitter::HTTPAuth.new('givememydraftbk', 'wercool2')
+    client = Twitter::Base.new(http_auth)
+#    client.update()    
+    y client.friends_timeline
+  end
+  
   def create_xml_feed
     # get posts
     posts = Post.find(:all, :conditions => ["shown = ?", true])
