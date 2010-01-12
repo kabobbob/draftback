@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :links, :collection => {:manage => :get}, :member => {:toggle_displayed => :get}
+
   map.resources :posts, :collection => {:archive => :get}, :member => {:full => :get, :toggle_displayed => :get}
 
   map.resource :user_session
@@ -9,7 +11,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.manage  '/manage',  :controller => 'main', :action => 'manage'
   map.contact '/contact', :controller => 'main', :action => 'contact'
-  map.tweet_post '/tweet_post', :controller => 'main', :action => 'tweet_post'
   
   map.root    :controller => 'main', :action => 'index'
   

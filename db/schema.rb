@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 9) do
+
+  create_table "links", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "url"
+    t.boolean  "display"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "short_url"
+    t.integer  "user_id"
+  end
 
   create_table "petitions", :force => true do |t|
     t.string   "full_name"
@@ -31,6 +42,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.boolean  "shown",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "short_url"
   end
 
   create_table "users", :force => true do |t|

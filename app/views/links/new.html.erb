@@ -1,0 +1,16 @@
+<h2>New Link</h2>
+<p></p>
+<% form_for @link, :url => links_path() do |f| %>
+<table>
+  <tr>
+    <td colspan="2"><%= f.error_messages %></td>
+  </tr>
+  <%= render :partial => "link_form", :object => f %>
+  <tr>
+    <td colspan="2" align='center'>
+      <%= f.submit "Submit" %>
+      <%= button_to_function "Back", "location.href = '#{manage_links_path()}'" %>
+    </td>
+  </tr>
+</table>
+<% end %>

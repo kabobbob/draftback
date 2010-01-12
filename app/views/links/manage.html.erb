@@ -1,0 +1,39 @@
+<h2>Link Management</h2>
+<p></p>
+<div>
+  <table width='100%' cellpadding='0' cellspacing='0'>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>URL</th>
+      <th>Display</th>
+      <th></th>
+    </tr>
+    <% i = 1%>
+    <% for link in @links %>
+    <% cell_class = alt %>
+    <tr>
+      <td <%= cell_class %>><%= i %>.</td>
+      <td <%= cell_class %>><%= link.title %></td>
+      <td <%= cell_class %>><%= link_to link.url, link.url, :target => '_blank' %></td>
+      <td <%= cell_class %>>
+        <%= check_box_tag "displayed", 1, link.display? ? true : false, :onclick => remote_function(:url => toggle_displayed_link_path(link), :method => :get, :with => "'checked='+this.checked") %>
+      </td>
+      <td <%= cell_class %>>
+        <%= link_to 'Edit', edit_link_path(link) %> |
+        <%= link_to 'Delete', link_path(link), :method => :delete, :confirm => 'Are you sure?' %>
+      </td>
+    </tr>
+    <tr>
+      <td <%= cell_class %>></td>
+      <td <%= cell_class %> colspan=''>
+        <%= link.description %>
+      </td>
+    </tr>
+    <% i += 1 %>
+    <% end %>
+  </table>
+</div>
+<div style='text-align: center; margin-top: 10px;'>
+  <%= link_to 'New Link', new_link_path() %> | <%= link_to 'Back', manage_path() %>
+</div>

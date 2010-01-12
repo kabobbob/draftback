@@ -1,0 +1,17 @@
+<h2>Edit Link</h2>
+<p></p>
+<div>
+  <% form_for @link, :url => link_path(@link), :html => {:method => :put} do |f| %>
+  <table>
+    <tr>
+      <td colspan="2"><%= f.error_messages %></td>
+    </tr>
+    <%= render :partial => "link_form", :object => f %>
+    <tr>
+      <td colspan="2" align='center'>
+        <%= f.submit "Update" %>&nbsp;&nbsp;<%= button_to_function "Back", "location.href = '#{manage_links_path()}'" %>
+      </td>
+    </tr>
+  </table>  
+  <% end %>
+</div>

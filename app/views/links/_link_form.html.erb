@@ -1,0 +1,12 @@
+<tr>
+  <td><b><%= link_form.label :title %></b></td>
+  <td><%= link_form.text_field :title, :size => "50" %></td>
+</tr>
+<tr>
+  <td><b><%= link_form.label :url %></b></td>
+  <td><%= link_form.text_field :url, :size => "50" %></td>
+</tr>
+<tr>
+  <td valign="top"><b><%= link_form.label :description %></b></td>
+  <td><%= link_form.tinymce :description, :size => "50x8" %></td>
+</tr>

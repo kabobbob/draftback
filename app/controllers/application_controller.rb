@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_archives
   
   helper :all # include all helpers, all the time
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :prod_environment
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
       :group => "month(created_at), year(created_at)", 
       :order => "created_at desc"
     )  
+  end
+  
+  # return true if prod env
+  def prod_environment
+    ENV['RAILS_ENV'] == 'production'
   end
   
   private
@@ -67,37 +72,31 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
   
-  def tweet_post(post, type)
-    # shorten post url with bit.ly
-    bitly_obj = bitly_object 
-    shorten = bitly_obj.shorten(full_post_url(post))
- 
-    # create tweet
-    title = post.title.length > 100 ? post.title.slice(0, 100) : post.title
-    tweet = title + ' ... ' + shorten.urls 
+  def tweet_this(tweet)
+    # generate twitter obj
+    http_auth = Twitter::HTTPAuth.new('givememydraftbk', 'wercool2')
+    twitter_obj = Twitter::Base.new(http_auth)
     
     # send tweet
-    twitter_obj = twitter_object
-    if RAILS_ENV == 'production'
+    if prod_environment
       twitter_obj.update(tweet)
-    else
-      y tweet
     end
   end
 
-  def bitly_object
+  def get_short_url(url)
+    # generate bit.ly object
     authorize = UrlShortener::Authorize.new 'givememydraftbk', 'R_091d91e2c73bb067bec83e759b9e1b70'
     client = UrlShortener::Client.new(authorize)
-  end
-  
-  def twitter_object
-    http_auth = Twitter::HTTPAuth.new('givememydraftbk', 'wercool2')
-    client = Twitter::Base.new(http_auth)
+    
+    # use bit.ly to shorten url
+    short_url = client.shorten(url)
+    short_url.urls    
   end
   
   def create_xml_feed
     # get posts
     posts = Post.find(:all, :conditions => ["shown = ?", true])
+    links = Link.find(:all, :conditions => ["display =?", true])
     
     # create feed
     version = "2.0"
