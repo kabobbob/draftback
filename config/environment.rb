@@ -42,3 +42,6 @@ end
 
 require 'rss/maker'
 require 'twitter'
+require 'url_shortener'
+require 'validates_email_format_of'
+require 'will_paginate'

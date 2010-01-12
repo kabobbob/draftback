@@ -1,13 +1,22 @@
 <h2> Sign the Petition</h2>
 <% form_for(:petition, @petition, :url => submit_petition_path()) do |f| -%>
-<table>
+<table width='100%'>
+  <% if f.error_messages %>
+  <tr>
+    <td colspan='2'><%= f.error_messages %></td>
+  </tr>
+  <% end %>
   <tr>
     <td>Full Name:</td>
     <td><%= f.text_field :full_name %></td>
   </tr>
   <tr>
     <td>Email Address:</td>
-    <td><%= f.text_field :email_address %></td>
+    <td>
+      <%= f.text_field :email_address %>
+      <br/>
+      <span style='color:red; font-size:0.8em;'>Email addresses are for signature purposes only and will not be sold or distributed.</span>
+    </td>
   </tr>
   <tr>
     <td>Location:</td>
@@ -24,3 +33,6 @@
   </tr>
 </table>
 <% end %>  
+<div style='text-align: center; margin-top: 10px;'>
+  <%= link_to 'View all Signatures', signatures_petition_path() %>
+</div>

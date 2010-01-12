@@ -1,0 +1,28 @@
+<h2> All <%= @num_signatures %> Signatures</h2>
+<p>
+  <table width='100%' cellspacing='0', cellpadding='0' border='0'>
+    <tr>
+      <th width='15px;'></th>
+      <th width='120px;'>Name</th>
+      <th width='120px;'>Location</th>
+      <th>Comments</th>
+    </tr>
+    <% for petition in @petitions %>
+    <% cell_class = alt %>
+    <tr>
+      <td <%= cell_class %>></td>
+      <td <%= cell_class %>><%= petition.full_name%></td>
+      <td <%= cell_class %>><%= petition.location%></td>
+      <td <%= cell_class %>><%= petition.comments%></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td colspan='4' align='center'>
+        <%= will_paginate @petitions %>
+      </td>
+    </tr>
+  </table>  
+  <div style='text-align: center; margin-top: 10px;'>
+    <%= link_to 'Sign the Petition', sign_petition_path() %>
+  </div>
+</p>

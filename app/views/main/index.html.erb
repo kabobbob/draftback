@@ -9,8 +9,9 @@
   <br/>
   Sincerely,<br/>
   The Undersigned
-  <div style='text-align: center;'>
-    <%= link_to 'Sign the Petition', sign_petition_path() %>
+  <div style='text-align: center; margin-top: 10px;'>
+    <%= link_to 'Sign the Petition', sign_petition_path() %> |
+    <%= link_to 'View all Signatures', signatures_petition_path() %>
   </div>
 </p>
 <% if @post %>

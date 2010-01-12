@@ -67,13 +67,32 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
   
-  def tweet_post(post)
+  def tweet_post(post, type)
+    # shorten post url with bit.ly
+    bitly_obj = bitly_object 
+    shorten = bitly_obj.shorten(full_post_url(post))
+ 
     # create tweet
-    tweet = "A new post has been created"
+    title = post.title.length > 100 ? post.title.slice(0, 100) : post.title
+    tweet = title + ' ... ' + shorten.urls 
+    
+    # send tweet
+    twitter_obj = twitter_object
+    if RAILS_ENV == 'production'
+      twitter_obj.update(tweet)
+    else
+      y tweet
+    end
+  end
+
+  def bitly_object
+    authorize = UrlShortener::Authorize.new 'givememydraftbk', 'R_091d91e2c73bb067bec83e759b9e1b70'
+    client = UrlShortener::Client.new(authorize)
+  end
+  
+  def twitter_object
     http_auth = Twitter::HTTPAuth.new('givememydraftbk', 'wercool2')
     client = Twitter::Base.new(http_auth)
-#    client.update()    
-    y client.friends_timeline
   end
   
   def create_xml_feed

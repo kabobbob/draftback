@@ -9,22 +9,37 @@
   <br/>
   Sincerely,<br/>
   The Undersigned
-  <div style='text-align: center;'>
-    <%= link_to 'Sign the Petition', sign_petition_path() %>
+  <div style='margin-top: 10px;'>
+    &nbsp;
   </div>
   
-  <table>
+  <table width='100%' cellspacing='0', cellpadding='0' border='0'>
     <tr>
-      <td>Name</td>
-      <td>Location</td>
-      <td>Comments</td>
+      <th width='15px;'></th>
+      <th width='120px;'>Name</th>
+      <th width='120px;'>Location</th>
+      <th>Comments</th>
     </tr>
     <% for petition in @petitions %>
+    <% cell_class = alt %>
     <tr>
-      <td><%= petition.full_name%></td>
-      <td><%= petition.location%></td>
-      <td><%= petition.comments%></td>
+      <td <%= cell_class %>><%= @num_signatures %></td>
+      <td <%= cell_class %>><%= petition.full_name%></td>
+      <td <%= cell_class %>><%= petition.location%></td>
+      <td <%= cell_class %>><%= petition.comments%></td>
+    </tr>
+    <% @num_signatures -= 1 %>
+    <% end %>
+    <% if @num_signatures > 0 %>
+    <tr>
+      <td colspan='4' align='center'>
+        .....
+      </td>
     </tr>
     <% end %>
   </table>
+  <div style='text-align: center; margin-top: 10px;'>
+    <%= link_to 'Sign the Petition', sign_petition_path() %> |
+    <%= link_to 'View all Signatures', signatures_petition_path() %>
+  </div>
 </p>

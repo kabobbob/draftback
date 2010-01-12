@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resource :petition, :member => {:sign => :get, :submit => :post, :manage => :get}
+  map.resource :petition, :member => {:sign => :get, :submit => :post, :signatures => :get, :manage => :get}
 
   map.manage  '/manage',  :controller => 'main', :action => 'manage'
   map.contact '/contact', :controller => 'main', :action => 'contact'
