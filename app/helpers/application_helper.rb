@@ -5,6 +5,11 @@ module ApplicationHelper
     "class='alt#{ cycle( s, s2 ) }'"
   end
   
+  # return true if prod env
+  def prod_environment
+    ENV['RAILS_ENV'] == 'production'
+  end
+
   # obscures email for display
   def obscure_email(email)
     return nil if email.nil? #Don't bother if the parameter is nil.
