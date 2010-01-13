@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
   map.resources :links, :collection => {:manage => :get}, :member => {:toggle_displayed => :get}
 
   map.resources :posts, :collection => {:archive => :get}, :member => {:full => :get, :toggle_displayed => :get}

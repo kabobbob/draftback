@@ -51,6 +51,7 @@ class PostsController < ApplicationController
   
   def full
     @post = Post.find(:first, :conditions => ["id = ? and shown = ?", params[:id], true])
+    @comment = Comment.new()
   end
   
   def toggle_displayed
