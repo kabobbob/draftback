@@ -1,5 +1,7 @@
 <div class='comment'>
-  <span class='comment_span_name'><%= comment.name %></span>
+  <span class='comment_span_name'>
+    <%= comment.name %>
+  </span>
   <span class="comment_span_date"><%= comment.created_at.strftime("%m/%d/%y  %I:%M%p") %></span>
   <div style="margin-top: 3px;">
     <%= comment.comment %>

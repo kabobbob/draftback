@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
-    @post = Post.find(:first, :conditions => ["shown = ?", true], :order => "created_at desc")
+    @post = Post.find(:first, :conditions => ["display = ?", true], :order => "created_at desc")
   end
   
   def manage

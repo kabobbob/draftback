@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   
   def get_recent_posts
     @recent_posts = Post.find(:all, 
-      :conditions => ["shown = ?", true], 
+      :conditions => ["display = ?", true], 
       :order => "created_at desc", 
       :limit => 5
     )  
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   def get_archives
     @archives = Post.find(:all, 
       :select => "month(created_at) as month, monthname(created_at) as monthname, year(created_at) as year", 
-      :conditions => ["shown = ?", true], 
+      :conditions => ["display = ?", true], 
       :group => "month(created_at), year(created_at)", 
       :order => "created_at desc"
     )  
@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
   
   def create_xml_feed
     # get posts
-    posts = Post.find(:all, :conditions => ["shown = ?", true])
+    posts = Post.find(:all, :conditions => ["display = ?", true])
     links = Link.find(:all, :conditions => ["display =?", true])
     
     # create feed

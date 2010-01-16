@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :comments
+  map.resources :comments, :member => {:toggle_displayed => :get}
 
   map.resources :links, :collection => {:manage => :get}, :member => {:toggle_displayed => :get}
 

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :require_user, :except => [:full, :archive]
+  before_filter :require_user, :except => [:show, :archive]
   
   def index
     @posts = Post.find(:all, :order => "created_at desc")
@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(:first, :conditions => ["id = ? and display = ?", params[:id], true])
+    @comment = Comment.new()
   end
   
   def edit
@@ -50,21 +51,20 @@ class PostsController < ApplicationController
   end
   
   def full
-    @post = Post.find(:first, :conditions => ["id = ? and shown = ?", params[:id], true])
-    @comment = Comment.new()
+    @post = Post.find(params[:id])
   end
   
   def toggle_displayed
-    shown = params[:checked] == "true" ? true : false
+    display = params[:checked] == "true" ? true : false
     post = Post.find(params[:id])
-    post.update_attribute(:shown, shown)
+    post.update_attribute(:display, display)
     create_xml_feed
   end
   
   def archive
     conditions = ""
     if params[:month] and params[:year]
-      conditions = ["month(created_at) = ? and year(created_at) = ?", params[:month], params[:year]]
+      conditions = ["month(created_at) = ? and year(created_at) = ? and display = ?", params[:month], params[:year], true]
     end
     
     @posts = Post.find(:all, :conditions => conditions, :order => "created_at desc") 

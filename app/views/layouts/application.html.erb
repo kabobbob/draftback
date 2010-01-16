@@ -24,7 +24,7 @@
       <h4>Recent Posts</h4>
       <ul class="side-nav">
         <% for post in @recent_posts %>
-          <li><%= link_to post.title, full_post_path(post.id) %></li>
+          <li><%= link_to post.title, post_path(post.id) %></li>
         <% end %>
       </ul>
 

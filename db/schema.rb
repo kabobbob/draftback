@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 10) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "display"
   end
 
   create_table "links", :force => true do |t|
@@ -32,8 +33,8 @@ ActiveRecord::Schema.define(:version => 10) do
   end
 
   create_table "petitions", :force => true do |t|
-    t.string   "full_name"
-    t.string   "email_address"
+    t.string   "name"
+    t.string   "email"
     t.string   "location"
     t.text     "comments"
     t.string   "ip_address"
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(:version => 10) do
     t.text     "title",                      :null => false
     t.string   "entry",      :limit => 4000, :null => false
     t.string   "signature",                  :null => false
-    t.boolean  "shown",                      :null => false
+    t.boolean  "display",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "short_url"

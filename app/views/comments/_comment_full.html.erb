@@ -1,0 +1,21 @@
+<% cell_class = alt %>
+<tr>
+  <td <%= cell_class %> width='150px;'>
+    <span class='comment_span_name'><%= comment_full.name %></span>
+  </td>
+  <td <%= cell_class %> width='150px;'>
+    <%= comment_full.email %>
+  </td>
+  <td <%= cell_class %>>
+    <span class="comment_span_date"><%= comment_full.created_at.strftime("%m/%d/%y  %I:%M%p") %></span> 
+  </td>
+  <td <%= cell_class %>>
+    <%= check_box_tag "displayed", 1, comment_full.display? ? true : false, 
+          :onclick => remote_function(:url => toggle_displayed_comment_path(comment_full.id), :method => :get, :with => "'checked='+this.checked") %>
+  </td>
+</tr>
+<tr>
+  <td <%= cell_class %> colspan='4' style='padding-bottom: 10px;'>
+    <%= comment_full.comment %>
+  </td>
+</tr>

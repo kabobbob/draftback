@@ -193,11 +193,6 @@ p {
 	margin: 0px; 
 	text-align: left;
 }
-	
-div.intro:first-letter {
-  font-size: 1.4em;
-  letter-spacing: -1px;
-}
 
 span.post_title{
   margin: 0 0 0 0;

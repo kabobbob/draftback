@@ -6,9 +6,9 @@
           page.visual_effect(:toggle_blind, row_id)
         end
     %>
-    <%= signature_full.full_name %>
+    <%= signature_full.name %>
   </td>
-  <td <%= cell_class %>><%= signature_full.email_address %></td>
+  <td <%= cell_class %>><%= signature_full.email %></td>
   <td <%= cell_class %>><%= signature_full.location %></td>
   <td <%= cell_class %>>
     <%= check_box_tag "displayed", 1, signature_full.display? ? true : false, 

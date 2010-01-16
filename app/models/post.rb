@@ -7,4 +7,8 @@ class Post < ActiveRecord::Base
   def before_create
     self.shown = true
   end
+  
+  def allowed_comments
+    self.comments.find(:all, :conditions => ['display = ?', true])
+  end
 end

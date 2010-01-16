@@ -4,9 +4,9 @@
   <td <%= cell_class %>><%= post.signature %></td>
   <td <%= cell_class %>><%= post.created_at.strftime("%m/%d/%Y %I:%M %p") %></td>
   <td <%= cell_class %> align="center">
-    <%= check_box_tag "displayed", 1, post.shown? ? true : false, :onclick => remote_function(:url => toggle_displayed_post_path(post.id), :method => :get, :with => "'checked='+this.checked") %>
+    <%= check_box_tag "displayed", 1, post.display ? true : false, :onclick => remote_function(:url => toggle_displayed_post_path(post.id), :method => :get, :with => "'checked='+this.checked") %>
   </td>
-  <td <%= cell_class %>><%= link_to 'View', post_path(post.id) %> | <%= link_to 'Delete', post_path(post.id), :method => :delete, :confirm => "Are you sure?" %></td>
+  <td <%= cell_class %>><%= link_to 'View', full_post_path(post.id) %> | <%= link_to 'Delete', post_path(post.id), :method => :delete, :confirm => "Are you sure?" %></td>
 </tr>
 <tr>
   <td <%= cell_class %> colspan="5">
