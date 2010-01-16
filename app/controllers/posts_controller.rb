@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     if @post.update_attributes(params[:post])
       create_xml_feed
       tweet_post(@post)
-      redirect_to post_path
+      redirect_to :action => 'full'
     else
       render :action => :edit
     end

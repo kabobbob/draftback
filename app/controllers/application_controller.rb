@@ -98,6 +98,33 @@ class ApplicationController < ActionController::Base
     posts = Post.find(:all, :conditions => ["display = ?", true])
     links = Link.find(:all, :conditions => ["display = ?", true])
     
+    # create feed array
+    feed_array = Array.new()
+    posts.each{|post|
+      tmp_hash = {
+        :title        => post.title,
+        :link         => post_url(post.id),
+        :description  => post.entry,
+        :date         => post.created_at,
+        :signature    => post.signature
+      }
+      feed_array.push(tmp_hash)
+    }
+    
+    links.each{|link|
+      desc_link = "<a href='#{link.url}' target='_blank'>#{link.url}</a>"
+      tmp_hash = {
+        :title        => 'New Link Posted',
+        :link         => links_url(),
+        :description  => link.description + '<br/>' + desc_link,
+        :date         => link.created_at,
+        :signature    => ''
+      }
+      feed_array.push(tmp_hash)
+    }
+    
+    feed_array.sort!{|a,b| b[:date] <=> a[:date]}
+    
     # create feed
     version = "2.0"
     destination = "givememydraftback.com_feed.xml"
@@ -108,12 +135,13 @@ class ApplicationController < ActionController::Base
       m.channel.description = "THE petition to get Commissioner Goodell to return the draft to the better format."
       m.items.do_sort = true # sort items by date
       
-      posts.each{|post| 
-        i = m.items.new_item
-        i.title = post.title
-        i.link = full_post_url(post.id)
-        i.description = post.entry + "<p></p>" + post.signature
-        i.date = Time.parse(post.created_at.strftime("%Y/%m/%d %I:%M"))
+      feed_array.each{|feed_item| 
+        i              = m.items.new_item
+        i.title        = feed_item[:title]
+        i.link         = feed_item[:link]
+        i.description  = feed_item[:description]
+        i.description += "<p><p>" + feed_item[:signature] unless feed_item[:signature].empty?
+        i.date         = Time.parse(feed_item[:date].strftime("%Y/%m/%d %I:%M"))
       }
     end
     

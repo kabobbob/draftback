@@ -3,10 +3,6 @@ class MainController < ApplicationController
     @post = Post.find(:first, :conditions => ["display = ?", true], :order => "created_at desc")
   end
   
-  def manage
-    
-  end
-  
   def contact
     
   end

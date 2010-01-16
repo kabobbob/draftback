@@ -11,7 +11,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :petition, :member => {:sign => :get, :submit => :post, :signatures => :get, :manage => :get, :toggle_displayed => :get}
 
-  map.manage  '/manage',  :controller => 'main', :action => 'manage'
   map.contact '/contact', :controller => 'main', :action => 'contact'
   
   map.root    :controller => 'main', :action => 'index'

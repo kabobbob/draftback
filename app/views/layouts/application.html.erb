@@ -25,6 +25,14 @@
     </div>
   
     <div id="leftcol">
+      <% if current_user %>
+      <h4>Manage</h4>
+      <ul class="side-nav">
+        <li><%= link_to 'Posts', posts_path() %></li>
+        <li><%= link_to 'Signatures', manage_petition_path() %></li>
+        <li><%= link_to 'Links', manage_links_path() %></li>
+      </ul>
+      <% end %>
       <h4>Recent Posts</h4>
       <ul class="side-nav">
         <% for post in @recent_posts %>
@@ -48,9 +56,6 @@
         <li><%= link_to 'Archive', archive_posts_path() %></li>
         <li><%= link_to 'Contact Us', contact_path() %></li>
         <li><%= link_to 'Links', links_path() %></li>
-        <% if current_user %>
-          <li><%= link_to 'Manage', manage_path() %></li>
-        <% end %>
       </ul>
     </div>
     

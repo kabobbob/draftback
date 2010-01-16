@@ -15,12 +15,10 @@
         <td><b>Signature</b></td>
         <td><%= @post.signature %></td>
       </tr>
-      <!--
       <tr>
-        <td><b>By</b></td>
-        <td><%= @post.user.login %></td>
+        <td><b>Short URL</b></td>
+        <td><%= @post.short_url %></td>
       </tr>
-      -->
       <tr>
         <td><b>Created</b></td>
         <td><%= @post.created_at.strftime("%m/%d/%Y %I:%M %p") %></td>

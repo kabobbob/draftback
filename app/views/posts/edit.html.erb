@@ -2,14 +2,14 @@
 <p></p>
 <div>
   <% form_for @post, :url => post_path(@post.id), :html => {:method => :put} do |f| %>
-  <table>
+  <table width='100%' border='0'>
     <tr>
       <td colspan="2"><%= f.error_messages %></td>
     </tr>
     <%= render :partial => "post_form", :object => f %>
     <tr>
-      <td colspan="2">
-        <%= f.submit "Update" %>&nbsp;&nbsp;<%= button_to_function "Back", "location.href = '#{post_path(@post.id)}'" %>
+      <td colspan="2" align='center'>
+        <%= f.submit "Update" %>&nbsp;&nbsp;<%= button_to_function "Back", "location.href = '#{full_post_path(@post.id)}'" %>
       </td>
     </tr>
   </table>  

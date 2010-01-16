@@ -7,11 +7,10 @@
       <th width="50px">By</th>
       <th width="155px">Created</th>
       <th width="70px">Displayed</th>
-      <th></th>
     </tr>
     <%= render :partial => "post", :collection => @posts %>
   </table>
 </div>
 <div style='text-align: center; margin-top: 10px;'>
-  <%= link_to 'New Post', new_post_path() %> | <%= link_to 'Back', manage_path() %>
+  <%= link_to 'New Post', new_post_path() %>
 </div>
