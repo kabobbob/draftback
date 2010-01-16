@@ -273,3 +273,19 @@ div.post_list{
   float: left;
   padding: 0 0px 0px 0;
 }
+
+.comment{
+  margin-left: 10px; 
+  padding: 5px 0px 10px 0px; 
+  border-top: #ccc 1px dotted;
+}
+
+.comment_span_name{
+  color: #008000; 
+  font-weight: bold;
+}
+
+.comment_span_date{
+  color: red; 
+  font-size: 0.9em;
+}

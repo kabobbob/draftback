@@ -1,0 +1,42 @@
+<% cell_class = alt %>
+<% row_id = 'info_row_' + signature_full.id.to_s %>
+<tr>
+  <td <%= cell_class %>>
+    <%= link_to_function '[+]', nil, :style => "color: red; font-size: 0.9em;" do |page|
+          page.visual_effect(:toggle_blind, row_id)
+        end
+    %>
+    <%= signature_full.full_name %>
+  </td>
+  <td <%= cell_class %>><%= signature_full.email_address %></td>
+  <td <%= cell_class %>><%= signature_full.location %></td>
+  <td <%= cell_class %>>
+    <%= check_box_tag "displayed", 1, signature_full.display? ? true : false, 
+          :onclick => remote_function(:url => toggle_displayed_petition_path(), :method => :get, :with => "'id=#{signature_full.id}&checked='+this.checked") %>
+  </td>
+</tr>
+<tr>
+  <td colspan='4' style='padding-left:22px;' <%= cell_class %>>
+    <%= '"' + signature_full.comments + '"' unless signature_full.comments.nil? or signature_full.comments.empty? %>
+  </td>
+</tr>
+<tr>
+  <td colspan="4" style='padding-left: 10px' <%= cell_class %>>
+    <div id='<%= row_id %>' style='display:none;'>
+      <table width='100%' border='0'>
+        <tr>
+          <td width="75px;" style="font-weight: bold;">IP Address</td>
+          <td><%= signature_full.ip_address%></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">User Agent</td>
+          <td><%= signature_full.user_agent %></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Referer</td>
+          <td><%= signature_full.http_referer %></td>
+        </tr>
+      </table>
+    </tr>
+  </td>
+</tr>

@@ -1,4 +1,6 @@
 class PetitionsController < ApplicationController
+  before_filter :require_user, :only => [:manage, :toggle_displayed]
+  
   def show
     # get no more than last 5 signatures
     @num_signatures = Petition.count(:conditions => ['display = ?', true])
@@ -29,15 +31,21 @@ class PetitionsController < ApplicationController
   end
   
   def signatures
-    page      = params[:page] ? params[:page].to_i : 1
-    per_page  = 15
-    @petitions = Petition.paginate :page => page, :per_page => per_page, :conditions => ['display = ?', true], :order => 'id desc'
+    page = params[:page] ? params[:page].to_i : 1
+    @petitions = Petition.paginate :page => page, :per_page => 15, :conditions => ['display = ?', true], :order => 'id desc'
     
     # get signature indexing
     @num_signatures = Petition.count(:conditions => ['display = ?', true])
   end
   
   def manage
-    
+    page = params[:page] ? params[:page] : 1
+    @signatures = Petition.paginate :page => page, :per_page => 20, :order => 'id desc'
+  end
+  
+  def toggle_displayed
+    display = params[:checked] == "true" ? true : false
+    signature = Petition.find(params[:id])
+    signature.update_attribute(:display, display)
   end
 end

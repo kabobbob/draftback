@@ -1,1 +1,1 @@
-render :partial => 'comment', :collection => @comments
+page.replace_html 'comments_div', :partial => 'comment', :collection => @comments

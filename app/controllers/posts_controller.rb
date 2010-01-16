@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :require_user, :only => [:index, :new, :create, :show, :edit, :update, :toggle_displayed]
+  before_filter :require_user, :except => [:full, :archive]
   
   def index
     @posts = Post.find(:all, :order => "created_at desc")
