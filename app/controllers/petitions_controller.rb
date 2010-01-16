@@ -3,10 +3,9 @@ class PetitionsController < ApplicationController
   
   def show
     # get no more than last 5 signatures
-    @num_signatures = Petition.count(:conditions => ['display = ?', true])
-    offset          = @num_signatures > 5 ? @num_signatures - 5 : 0
-    @petitions      = Petition.find(:all, :conditions => ['display = ?', true], :order => 'id desc', :offset => offset)
-    @message        = params[:message] ? params[:message] : ''
+    @signatures       = Petition.find(:all, :conditions => ['display = ?', true], :order => 'id desc', :limit => 5)
+    @signature_count  = Petition.count(:conditions => ['display = ?', true])
+    @message          = params[:message] ? params[:message] : ''
   end
   
   def sign
@@ -34,16 +33,11 @@ class PetitionsController < ApplicationController
   end
   
   def signatures
-    page = params[:page] ? params[:page].to_i : 1
-    @petitions = Petition.paginate :page => page, :per_page => 15, :conditions => ['display = ?', true], :order => 'id desc'
-    
-    # get signature indexing
-    @num_signatures = Petition.count(:conditions => ['display = ?', true])
+    @signatures = Petition.find(:all, :conditions => ['display = ?', true], :order => 'id desc')
   end
   
   def manage
-    page = params[:page] ? params[:page] : 1
-    @signatures = Petition.paginate :page => page, :per_page => 20, :order => 'id desc'
+    @signatures = Petition.find(:all, :order => 'id desc')
   end
   
   def toggle_displayed

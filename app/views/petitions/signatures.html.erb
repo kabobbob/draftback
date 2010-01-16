@@ -7,20 +7,17 @@
       <th width='120px;'>Location</th>
       <th>Comments</th>
     </tr>
-    <% for petition in @petitions %>
+    <% index = @signatures.length %>
+    <% for signature in @signatures %>
     <% cell_class = alt %>
     <tr>
-      <td <%= cell_class %>></td>
-      <td <%= cell_class %>><%= petition.name%></td>
-      <td <%= cell_class %>><%= petition.location%></td>
-      <td <%= cell_class %>><%= petition.comments%></td>
+      <td <%= cell_class %>><%= index %>.</td>
+      <td <%= cell_class %>><%= signature.name%></td>
+      <td <%= cell_class %>><%= signature.location%></td>
+      <td <%= cell_class %>><%= signature.comments%></td>
     </tr>
+    <% index -= 1%>
     <% end %>
-    <tr>
-      <td colspan='4' align='center'>
-        <%= will_paginate @petitions %>
-      </td>
-    </tr>
   </table>  
   <div style='text-align: center; margin-top: 10px;'>
     <%= link_to 'Sign the Petition', sign_petition_path() %>

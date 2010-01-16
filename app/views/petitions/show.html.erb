@@ -21,17 +21,17 @@
       <th width='120px;'>Location</th>
       <th>Comments</th>
     </tr>
-    <% for petition in @petitions %>
+    <% for petition in @signatures %>
     <% cell_class = alt %>
     <tr>
-      <td <%= cell_class %>><%= @num_signatures %></td>
+      <td <%= cell_class %>><%= @signature_count %>.</td>
       <td <%= cell_class %>><%= petition.name%></td>
       <td <%= cell_class %>><%= petition.location%></td>
       <td <%= cell_class %>><%= petition.comments%></td>
     </tr>
-    <% @num_signatures -= 1 %>
+    <% @signature_count -= 1 %>
     <% end %>
-    <% if @num_signatures > 0 %>
+    <% if @signature_count > 0 %>
     <tr>
       <td colspan='4' align='center'>
         .....
