@@ -6,12 +6,14 @@ class PetitionsController < ApplicationController
     @num_signatures = Petition.count(:conditions => ['display = ?', true])
     offset          = @num_signatures > 5 ? @num_signatures - 5 : 0
     @petitions      = Petition.find(:all, :conditions => ['display = ?', true], :order => 'id desc', :offset => offset)
+    @message        = params[:message] ? params[:message] : ''
   end
   
   def sign
     # store referer
     session[:http_referer] = request.env['HTTP_REFERER']
     @petition = Petition.new()
+    @message = ''    
   end
   
   def submit
@@ -24,8 +26,9 @@ class PetitionsController < ApplicationController
     # save signature
     @petition = Petition.new(params[:petition])
     if @petition.save
-      redirect_to :action => 'show'
+      redirect_to :action => 'show', :message => 'Thank you for your signature!' 
     else
+      @message = "There are errors in your signature, please see below."
       render :action => 'sign'
     end
   end

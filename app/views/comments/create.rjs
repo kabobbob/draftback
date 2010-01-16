@@ -1,1 +1,11 @@
-page.replace_html 'comments_div', :partial => 'comment', :collection => @comments
+if @saved
+  text = "Thank you for your comment!"
+  page.replace_html 'comments_div', :partial => 'comment', :collection => @comments
+  page['comment_name'].value = ''
+  page['comment_email'].value = ''
+  page['comment_comment'].value = ''  
+else
+  text = "All 'comment' fields are required, please verify input."
+end
+
+page.call 'showNotifyBar', text, 'notify_div', 3500, 'normal' 

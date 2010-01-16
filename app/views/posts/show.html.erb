@@ -26,7 +26,11 @@
       </tr>
       <tr>
         <td valign='top'><b>Comment:</b></td>
-        <td><%= f.text_area :comment, :size => '34x5' %></td>
+        <td>
+          <%= f.text_area :comment, :size => '34x5' %>
+          <br/>
+          <span style='color: red; font-size: 0.9em;'>All fields are required.</span>
+        </td>
       </tr>
       <tr>
         <td colspan='2' align='center'>

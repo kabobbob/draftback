@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
     # generate bit.ly object
     authorize = UrlShortener::Authorize.new 'givememydraftbk', 'R_091d91e2c73bb067bec83e759b9e1b70'
     client = UrlShortener::Client.new(authorize)
-    
+
     # use bit.ly to shorten url
     short_url = client.shorten(url)
     short_url.urls    
@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
   def create_xml_feed
     # get posts
     posts = Post.find(:all, :conditions => ["display = ?", true])
-    links = Link.find(:all, :conditions => ["display =?", true])
+    links = Link.find(:all, :conditions => ["display = ?", true])
     
     # create feed
     version = "2.0"

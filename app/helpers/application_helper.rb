@@ -30,4 +30,10 @@ module ApplicationHelper
       a + g[c]
     end
   end
+  
+  def show_notify_bar(text, delay = 2500, speed = 'normal')
+    unless text.empty?
+      javascript_tag "showNotifyBar('#{text}', 'notify_div', #{delay}, '#{speed}');"
+    end
+  end
 end

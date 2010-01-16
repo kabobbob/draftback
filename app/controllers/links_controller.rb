@@ -20,7 +20,7 @@ class LinksController < ApplicationController
     
     if @link.save
       create_xml_feed
-      tweet_this(@link)
+      tweet_link(@link)
       flash[:notice] = "Link submitted!"
       redirect_to manage_links_path()      
     else
@@ -42,7 +42,7 @@ class LinksController < ApplicationController
     
     if @link.update_attributes(params[:link])
       create_xml_feed
-      tweet_this(@post)
+      tweet_link(@link)
       flash[:notice] = "Entry updated!"
       redirect_to manage_links_path
     else

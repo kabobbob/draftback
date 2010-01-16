@@ -14,10 +14,9 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     
     if @post.save
-      @post.update_attribute(:short_url, get_short_url(post_path(@post)))
+      @post.update_attribute(:short_url, get_short_url(post_url(@post)))
       create_xml_feed
       tweet_post(@post)
-      flash[:notice] = "Entry submitted!"
       redirect_to posts_path()
     else
       render :action => "new"
@@ -37,8 +36,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       create_xml_feed
-      tweet_this(@post)
-      flash[:notice] = "Entry updated!"
+      tweet_post(@post)
       redirect_to post_path
     else
       render :action => :edit
