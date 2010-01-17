@@ -2,22 +2,11 @@
 <p>
   <table width='100%' cellspacing='0', cellpadding='0' border='0'>
     <tr>
-      <th width='15px;'></th>
-      <th width='120px;'>Name</th>
-      <th width='120px;'>Location</th>
-      <th>Comments</th>
+      <th align='left' width='15px;'></th>
+      <th align='left' width='120px;'>Name</th>
+      <th align='left' width='120px;'>Location</th>
     </tr>
-    <% index = @signatures.length %>
-    <% for signature in @signatures %>
-    <% cell_class = alt %>
-    <tr>
-      <td <%= cell_class %>><%= index %>.</td>
-      <td <%= cell_class %>><%= signature.name%></td>
-      <td <%= cell_class %>><%= signature.location%></td>
-      <td <%= cell_class %>><%= signature.comments%></td>
-    </tr>
-    <% index -= 1%>
-    <% end %>
+    <%= render :partial => 'signature', :collection => @signatures %>
   </table>  
   <div style='text-align: center; margin-top: 10px;'>
     <%= link_to 'Sign the Petition', sign_petition_path() %>

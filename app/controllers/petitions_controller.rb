@@ -3,9 +3,9 @@ class PetitionsController < ApplicationController
   
   def show
     # get no more than last 5 signatures
-    @signatures       = Petition.find(:all, :conditions => ['display = ?', true], :order => 'id desc', :limit => 5)
-    @signature_count  = Petition.count(:conditions => ['display = ?', true])
-    @message          = params[:message] ? params[:message] : ''
+    @signatures = Petition.find(:all, :conditions => ['display = ?', true], :order => 'id desc', :limit => 5)
+    @index      = Petition.count(:conditions => ['display = ?', true])
+    @message    = params[:message] ? params[:message] : ''
   end
   
   def sign
@@ -34,6 +34,7 @@ class PetitionsController < ApplicationController
   
   def signatures
     @signatures = Petition.find(:all, :conditions => ['display = ?', true], :order => 'id desc')
+    @index      = @signatures.length
   end
   
   def manage

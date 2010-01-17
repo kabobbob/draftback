@@ -16,22 +16,12 @@
   
   <table width='100%' cellspacing='0', cellpadding='0' border='0'>
     <tr>
-      <th width='15px;'></th>
-      <th width='120px;'>Name</th>
-      <th width='120px;'>Location</th>
-      <th>Comments</th>
+      <th align='left' width='15px;'></th>
+      <th align='left' width='120px;'>Name</th>
+      <th align='left' width='120px;'>Location</th>
     </tr>
-    <% for petition in @signatures %>
-    <% cell_class = alt %>
-    <tr>
-      <td <%= cell_class %>><%= @signature_count %>.</td>
-      <td <%= cell_class %>><%= petition.name%></td>
-      <td <%= cell_class %>><%= petition.location%></td>
-      <td <%= cell_class %>><%= petition.comments%></td>
-    </tr>
-    <% @signature_count -= 1 %>
-    <% end %>
-    <% if @signature_count > 0 %>
+    <%= render :partial => 'signature', :collection => @signatures %>
+    <% if @index > 0 %>
     <tr>
       <td colspan='4' align='center'>
         .....

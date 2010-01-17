@@ -1,8 +1,11 @@
+<% cell_class = alt %>
 <tr>
-  
+  <td <%= cell_class %> style='padding-top: 5px;'><%= @index %>.</td>
+  <td <%= cell_class %> style='padding-top: 5px;'><%= signature.name%></td>
+  <td <%= cell_class %> style='padding-top: 5px;'><%= signature.location%></td>
 </tr>
 <tr>
-  <td colspan='3'>
-    <%= signature.comments %>
-  </td>
+  <td <%= cell_class %> style='padding-bottom: 10px;'>&nbsp;</td>
+  <td <%= cell_class %> colspan='2'><i><%= signature.comments%></i></td>
 </tr>
+<% @index -= 1 %>
