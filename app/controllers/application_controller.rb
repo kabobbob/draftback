@@ -93,6 +93,15 @@ class ApplicationController < ActionController::Base
     short_url.urls    
   end
   
+  def post_to_fb(message)
+    api_key = 'b79926e4b65d173c19bc790512da49b9'
+    secret  = 'ab6133b36035c0e1aa89a6d8d4711215'
+    session = 'c057029fc40dd273e9c64ef5-1254441399'
+    uid     = '224265558413'
+    
+    get_session_result = MiniFB.call(api_key, secret, "Stream.publish", "format" => "JSON", "message" => message, "session_key" => session, "uid" => uid)
+  end
+  
   def create_xml_feed
     # get posts
     posts = Post.find(:all, :conditions => ["display = ?", true])

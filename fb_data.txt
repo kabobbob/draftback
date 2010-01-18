@@ -1,0 +1,7 @@
+api_key  = b79926e4b65d173c19bc790512da49b9
+secret   = ab6133b36035c0e1aa89a6d8d4711215
+app_id   = 255777305348
+page_id  = 224265558413
+# one_time = 94BCIK
+one_time = WM5KM0 
+auth_token = ce4d2822c1346d1253cc4184709d1b99

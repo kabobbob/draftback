@@ -37,6 +37,7 @@ class PostsController < ApplicationController
     if @post.update_attributes(params[:post])
       create_xml_feed
       tweet_post(@post)
+      fb_post(@post)
       redirect_to :action => 'full'
     else
       render :action => :edit
@@ -76,5 +77,11 @@ class PostsController < ApplicationController
     
     # send tweet
     tweet_this(tweet)
+  end
+  
+  def fb_post(post)
+   message = post.title
+   
+   post_to_fb(message)
   end
 end
