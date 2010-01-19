@@ -11,5 +11,5 @@ production:
   encoding: utf8
   database: draftback_production
   username: draftback
-  password:  draftback
+  password: draftback
   host: localhost
