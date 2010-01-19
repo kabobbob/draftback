@@ -63,12 +63,20 @@ class LinksController < ApplicationController
   end
   
   private
-  def tweet_link(link)
-    # create tweet
+  def send_link(link)
+    # tweet link
     title = link.title.length > 100 ? link.title.slice(0, 100) : link.title
     tweet = title + ' ... ' + link.short_url
-    
-    # send tweet
     tweet_this(tweet)
+    
+    # facebook link
+    message = "New Link!"
+    attachment = {
+      :href         => link.url, 
+      :name         => link.title, 
+      :description  => link.description
+    }
+   
+    fb_this(message, attachment)
   end
 end

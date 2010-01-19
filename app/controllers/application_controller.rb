@@ -72,6 +72,20 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
   
+  def strip_tags(message)
+    message.gsub( %r{</?[^>]+?>}, '' )  
+  end
+  
+  def get_short_url(url)
+    # generate bit.ly object
+    authorize = UrlShortener::Authorize.new 'givememydraftbk', 'R_091d91e2c73bb067bec83e759b9e1b70'
+    client = UrlShortener::Client.new(authorize)
+
+    # use bit.ly to shorten url
+    short_url = client.shorten(url)
+    short_url.urls    
+  end
+
   def tweet_this(tweet)
     # generate twitter obj
     http_auth = Twitter::HTTPAuth.new('givememydraftbk', 'wercool2')
@@ -83,23 +97,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_short_url(url)
-    # generate bit.ly object
-    authorize = UrlShortener::Authorize.new 'givememydraftbk', 'R_091d91e2c73bb067bec83e759b9e1b70'
-    client = UrlShortener::Client.new(authorize)
-
-    # use bit.ly to shorten url
-    short_url = client.shorten(url)
-    short_url.urls    
-  end
-  
-  def post_to_fb(message)
-    api_key = 'b79926e4b65d173c19bc790512da49b9'
-    secret  = 'ab6133b36035c0e1aa89a6d8d4711215'
-    session = 'c057029fc40dd273e9c64ef5-1254441399'
-    uid     = '224265558413'
-    
-    get_session_result = MiniFB.call(api_key, secret, "Stream.publish", "format" => "JSON", "message" => message, "session_key" => session, "uid" => uid)
+  def fb_this(message, attachment)
+    if prod_environment
+      api_key = 'b79926e4b65d173c19bc790512da49b9'
+      secret  = 'ab6133b36035c0e1aa89a6d8d4711215'
+      session = 'c057029fc40dd273e9c64ef5-1254441399'
+      uid     = '224265558413'
+      
+      get_session_result = MiniFB.call(api_key, secret, "Stream.publish", 
+        "format"      => "JSON", 
+        "session_key" => session, 
+        "uid"         => uid, 
+        "message"     => message,
+        "attachment"  => attachment.to_json
+      )
+    end
   end
   
   def create_xml_feed
