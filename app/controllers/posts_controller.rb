@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     if @post.save
       @post.update_attribute(:short_url, get_short_url(post_url(@post)))
       create_xml_feed
-      send_post(@post)
+      send_post(@post, 'new')
       redirect_to posts_path()
     else
       render :action => "new"
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       create_xml_feed
-      send_post(@post)
+      send_post(@post, 'update')
       redirect_to :action => 'full'
     else
       render :action => :edit
@@ -69,14 +69,14 @@ class PostsController < ApplicationController
   end
   
   private
-  def send_post(post)
+  def send_post(post, type)
     # tweet post
     title = post.title.length > 100 ? post.title.slice(0, 100) : post.title
     tweet = title + ' ... ' + post.short_url
     tweet_this(tweet)
     
     # facebook post
-    message = "New Post!"
+    message = type == 'new' ? "New Post!" : "Updated Post"
     attachment = {
       :href         => post_url(post), 
       :name         => post.title, 
