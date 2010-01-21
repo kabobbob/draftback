@@ -25,6 +25,7 @@ class PetitionsController < ApplicationController
     # save signature
     @petition = Petition.new(params[:petition])
     if @petition.save
+      send_signature_count()
       redirect_to :action => 'show', :message => 'Thank you for your signature!' 
     else
       @message = "There are errors in your signature, please see below."
@@ -45,5 +46,26 @@ class PetitionsController < ApplicationController
     display = params[:checked] == "true" ? true : false
     signature = Petition.find(params[:id])
     signature.update_attribute(:display, display)
+  end
+  
+    private
+  def send_signature_count
+    # get count
+    signature_count = Petition.count(:all, :conditions => ['display => ?', true])
+
+#    # tweet post
+#    title = post.title.length > 100 ? post.title.slice(0, 100) : post.title
+#    tweet = title + ' ... ' + post.short_url
+#    tweet_this(tweet)
+#    
+#    # facebook post
+#    message = type == 'new' ? "New Post!" : "Updated Post"
+#    attachment = {
+#      :href         => post_url(post), 
+#      :name         => post.title, 
+#      :description  => strip_tags(post.entry)
+#    }
+#   
+#    fb_this(message, attachment)
   end
 end
