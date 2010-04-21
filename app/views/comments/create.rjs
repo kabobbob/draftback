@@ -5,7 +5,7 @@ if @saved
   page['comment_email'].value = ''
   page['comment_comment'].value = ''  
 else
-  text = "All 'comment' fields are required, please verify input."
+  text = "All 'comment' fields are required, please verify input and captcha."
 end
 
 page.call 'showNotifyBar', text, 'notify_div', 3500, 'normal' 

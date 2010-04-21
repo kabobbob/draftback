@@ -41,6 +41,10 @@ Rails::Initializer.run do |config|
   config.active_record.timestamped_migrations = false
 end
 
+# reCaptcha keys
+ENV['RECAPTCHA_PUBLIC_KEY']  = '6LfgnQwAAAAAACIy7ZDmlVzi-aPmSHcuD4A7lupx'
+ENV['RECAPTCHA_PRIVATE_KEY'] = '6LfgnQwAAAAAAFmWYp_cLcqxhxKpkTZnKOpK6ALk'
+
 require 'rss/maker'
 require 'twitter'
 require 'url_shortener'

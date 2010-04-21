@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     comment.post_id = params[:post_id]
     comment.display = true
     
-    if comment.save    
+    if verify_recaptcha(:model => comment) && comment.save    
       @comments = Post.find(params[:post_id]).allowed_comments
       @saved    = true
     end
