@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/kabobbob/rubyrss.git
+  revision: 9518c0c9bdc4cf1332712b694ed10c22a6479119
+  specs:
+    rubyrss (1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -35,7 +41,6 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
-    rubyrss (1.1)
     simple-rss (1.2.3)
     twitter (0.6.3)
       httparty (>= 0.4.2)
@@ -55,7 +60,7 @@ DEPENDENCIES
   json
   mini_fb
   rails (= 2.3.5)
-  rubyrss
+  rubyrss!
   simple-rss
   twitter
   url_shortener

@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '2.3.5'
 gem 'json'
 gem 'simple-rss'
-gem 'rubyrss'
+gem 'rubyrss', :git => "git://github.com/kabobbob/rubyrss.git"
 gem 'twitter'
 gem 'url_shortener'
 gem 'will_paginate'
