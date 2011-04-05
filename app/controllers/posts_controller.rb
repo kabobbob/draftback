@@ -62,7 +62,7 @@ class PostsController < ApplicationController
   def archive
     conditions = ""
     if params[:month] and params[:year]
-      conditions = ["month(created_at) = ? and year(created_at) = ? and display = ?", params[:month], params[:year], true]
+      conditions = ["date_part('month', created_at) = ? and date_part('year', created_at) = ? and display = ?", params[:month], params[:year], true]
     end
     
     @posts = Post.find(:all, :conditions => conditions, :order => "created_at desc") 

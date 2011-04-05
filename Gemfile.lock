@@ -30,6 +30,7 @@ GEM
       hashie
       rest-client
     oauth (0.4.4)
+    pg (0.10.1)
     rack (1.0.1)
     rails (2.3.5)
       actionmailer (= 2.3.5)
@@ -59,6 +60,7 @@ DEPENDENCIES
   authlogic
   json
   mini_fb
+  pg
   rails (= 2.3.5)
   rubyrss!
   simple-rss

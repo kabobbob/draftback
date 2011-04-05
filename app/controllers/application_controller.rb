@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
   
   def get_archives
     @archives = Post.find(:all, 
-      :select => "month(created_at) as month, monthname(created_at) as monthname, year(created_at) as year", 
+      :select => "date_part('month', created_at) as month, to_char(created_at, 'MONTH') as monthname, date_part('year', created_at) as year", 
       :conditions => ["display = ?", true], 
-      :group => "month(created_at), year(created_at)", 
-      :order => "created_at desc"
+      :group => "date_part('month', created_at), to_char(created_at, 'MONTH'), date_part('year', created_at)", 
+      :order => "date_part('year', created_at) desc, date_part('month', created_at) desc"
     )  
   end
   
